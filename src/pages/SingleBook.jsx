@@ -7,8 +7,7 @@ const SingleBook = () => {
    const { id } = useParams();
   const [book, setBook] = useState(null);
   let host = "https://bookstore-ksae.onrender.com";
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2NDdmNmQ2MzgyMDQ1OTE0NjYzYmRjZTYiLCJpYXQiOjE2ODYwNzI4MzZ9.hbOgfgCYiuBfTqfQX8Smg8BWZQ33KiIsmnovvxbz7kA";
+  const token =localStorage.getItem("secret-key")
 
   useEffect(() => {
     const fetchBookDetails = async () => {

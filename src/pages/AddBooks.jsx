@@ -20,7 +20,7 @@ const AddBooks = () => {
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json',
-                    'super-secret-key':"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2NDdmNzI2MmYzOWVlYjk5ZjBmZTQ3N2MiLCJpYXQiOjE2ODYwODI5MDR9.moPDE1ILxtuxZb0RE_v0XqsJiYKCUx7IZaVf1Ft1774"
+                    "super-secret-key": localStorage.getItem("super-secret-key"),
                 },
                 body:JSON.stringify(formdata)
             }
