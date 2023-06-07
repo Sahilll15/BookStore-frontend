@@ -33,11 +33,13 @@ export default function Login() {
       if(response.ok){
         console.log(json);
         console.log(json.user.role);
+        console.log(json.user.name)
         if(json.user.role ==="superuser"){
             localStorage.setItem("super-secret-key", json.token);
         }
         localStorage.setItem("secret-key", json.token);
         localStorage.setItem("user_id", json.user._id);
+        localStorage.setItem("user_name", json.user.name);
         toast({
           title: "Login Success",
           description: "You are successfully logged in",

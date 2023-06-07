@@ -2,12 +2,25 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './Singlebook.css'
+import CartAmountToggle from '../components/CartAmountToggle';
+import { useAddCart } from '../hooks/carthooks';
 const SingleBook = () => {
-  
-   const { id } = useParams();
+  const { addCart, isLoading}=useAddCart();
+  const [quantity,setQuantity]=useState(1)
+  const { id } = useParams();
   const [book, setBook] = useState(null);
   let host = "https://bookstore-ksae.onrender.com";
   const token =localStorage.getItem("secret-key")
+
+  const setDecrease=()=>{
+    if(quantity>1){
+      setQuantity(quantity-1)
+    }
+  }
+  const setIncrease=()=>{
+    setQuantity(quantity+1)
+  }
+  
 
   useEffect(() => {
     const fetchBookDetails = async () => {
@@ -32,6 +45,11 @@ const SingleBook = () => {
     fetchBookDetails();
   }, []);
 
+  const addtocart=async()=>{
+    const response=await addCart(id,quantity)
+    console.log(response)
+  }
+
   if (!book) {
     return <div>Loading...</div>;
   }
@@ -48,7 +66,8 @@ const SingleBook = () => {
             <p className="book-info"> <strong>Author:</strong> {book.author}</p>
             <p className="book-info"> <strong>Description:</strong> {book.description}</p>
             <p className="book-info"> <strong>Price:</strong> {book.price} Rs</p>
-            <a className="btn btn-primary my-2">Add to cart</a>
+            <CartAmountToggle quantity={quantity} setDecrease={setDecrease} setIncrease={setIncrease}/>
+            <a className="btn btn-primary my-2" onClick={addtocart}>Add to cart</a>
           </div>
         </div>
       </div>

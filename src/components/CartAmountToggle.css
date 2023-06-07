@@ -1,0 +1,23 @@
+.cart-button {
+    display: flex;
+    align-items: center;
+  }
+  
+  .amount-toggle {
+    display: flex;
+    align-items: center;
+  }
+  
+  .amount-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .amount-style {
+    margin: 0 10px;
+  }
+  

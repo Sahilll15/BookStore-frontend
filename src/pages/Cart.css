@@ -1,0 +1,28 @@
+.cart-container {
+    margin: 10px;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  max-width: 600px;
+  }
+  
+    .card-body {
+        padding: 10px;
+    }
+  
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 16px;
+  }
+  
+  .text-muted {
+    color: #777;
+  }
+  

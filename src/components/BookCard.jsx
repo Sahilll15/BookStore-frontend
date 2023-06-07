@@ -75,7 +75,7 @@ const BookCard = ({ item ,ondeletion}) => {
                 <i class="fa-solid fa-indian-rupee-sign" style={{marginTop:"10px"}}></i>
                 
               </div>
-              <a className="btn btn-primary my-2">Add to cart</a>
+              <Link className="btn btn-primary my-2" to={`/book/${item._id}`}>Buy Book</Link>
 
               {isEventCreatedByUser && (
         <>
