@@ -83,7 +83,7 @@ const AddBooks = () => {
       <input type="text" className="form-control" id="price" placeholder='price..(Rs)' name='price' onChange={onchange}/>
     </div>
     <div className="form-group">
-      <label htmlFor="price">Image:</label>
+      <label htmlFor="image">Image:</label>
       <input type="text" className="form-control" id="price" placeholder='Image url...' name='image' onChange={onchange}/>
     </div>
     <button type="submit" className="btn btn-primary my-3">Submit</button>

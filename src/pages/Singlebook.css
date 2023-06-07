@@ -1,0 +1,26 @@
+.book-image {
+    width: 600px;
+    height: 800px;
+    margin-top: 100px;
+  }
+  
+  .book-details {
+    display: flex;
+    flex-direction: column;
+    justify-content:left;
+    height: 400px; /* Adjust the height as needed */
+    font-size: 30px; /* Adjust the font size as needed */
+    text-align: left;
+  }
+  
+  .book-title {
+    font-size: 60px; /* Adjust the font size as needed */
+    font-weight: bold; /* Highlight the heading */
+    margin-bottom: 10px;
+  }
+  
+  .book-info {
+    font-size: 30px; /* Adjust the font size as needed */
+    margin-bottom: 5px;
+  }
+  

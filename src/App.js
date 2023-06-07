@@ -6,26 +6,34 @@ import Navbar from './components/Navbar';
 import PrivateRoutes from './utils/PrivateRoutes';
 import AddBooks from './pages/AddBooks';
 import HeroPage from './pages/Hero'
+import Register from './pages/Register';
+import Login from './pages/Login';
+import SuperUserPrivateRoute from './utils/SuperUserPrivateRoute'
+import ErrorPage from './pages/ErrorPage';
+import SingleBook from './pages/SingleBook';
 
 const App = () => {
   return (
     <ChakraProvider>
-      <Navbar />
+
       <div className="App">
         <Router>
+          <Navbar />
           <Routes>
-            {/* <Route element={<PrivateRoutes />}>
+            <Route element={<PrivateRoutes />}>
+              <Route element={<Home />} path="/" exact />
+              <Route path="/book/:id" element={<SingleBook />} />
 
-              <Route element={<AddEvent />} path="/addevent" exact />
+            </Route>
+            <Route element={<SuperUserPrivateRoute />}>
+              <Route element={<AddBooks />} path="/superuser/addBooks" exact />
+            </Route>
 
-              <Route element={<Myevents />} path="/myevents" exact />
-            </Route> */}
-            <Route element={<Home />} path="/" exact />
-            {/* <Route element={<Home />} path="/home" exact /> */}
-            <Route element={<AddBooks />} path="/superuser/addBooks" exact />
-            {/* <Route element={<Login />} path="/login" />
 
-            <Route element={<Register />} path="/register" /> */}
+            <Route element={<Login />} path="/login" />
+
+            <Route element={<Register />} path="/register" />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Router>
       </div>
