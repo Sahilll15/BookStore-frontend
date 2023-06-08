@@ -3,20 +3,28 @@ import "./Cart.css";
 import { useGetCart } from "../hooks/carthooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-
+import { useCreateOrder } from "../hooks/orderhooks";
 const Cart = () => {
   const username=localStorage.getItem("user_name")
   const { cart, getCart, isloading } = useGetCart();
   const [showModal, setShowModal] = useState(false);
+  const { createOrder, isLoading }=useCreateOrder();
+  const [selectedItems, setSelectedItems] = useState([]);
+ 
+ 
+  const totalPrice = cart.reduce((total, item) => {
+    const itemPrice = item.book.price * item.quantity;
+    return total + itemPrice;
+  }, 0);
 
+  console.log(totalPrice)
   useEffect(() => {
     getCart();
   }, []);
 
   const handlePlaceOrder = () => {
-    // Perform order placement logic here
-
-    // Display the success message modal
+  
+    createOrder(cart,totalPrice);
     setShowModal(true);
   };
 
@@ -39,10 +47,10 @@ const Cart = () => {
                   <h5 className="card-title">{item.book.title}</h5>
                   <p className="card-text">Quantity: {item.quantity}</p>
                   <p className="card-text">Price: {item.book.price} Rs</p>
-                  <p className="card-text">Total: {item.book.price * item.quantity} Rs</p>
-                  <button className="btn btn-primary" onClick={handlePlaceOrder}>
-                    Place Order <FontAwesomeIcon icon={faShoppingCart} />
-                  </button>
+                  <p className="card-text" >Total: {item.book.price * item.quantity} Rs</p>
+                  
+      
+
                 </div>
               </div>
             </div>
@@ -51,7 +59,12 @@ const Cart = () => {
       ) : (
         <p>Your cart is empty.</p>
       )}
-
+  <button
+        className="btn btn-primary"
+        onClick={() => handlePlaceOrder()}
+      >
+        Place Order <FontAwesomeIcon icon={faShoppingCart} />
+      </button>
       {/* Success Message Modal */}
       {showModal && (
         <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
